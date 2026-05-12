@@ -1,0 +1,347 @@
+
+<!DOCTYPE html>
+<html lang="ru">
+<head>
+  <meta charset="UTF-8" />
+  <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+  <title>Wishlist Симки 🎂</title>
+  <style>
+    * {
+      box-sizing: border-box;
+      margin: 0;
+      padding: 0;
+    }
+
+    body {
+      font-family: Arial, sans-serif;
+      background:
+        radial-gradient(circle at top left, rgba(120, 90, 255, 0.45), transparent 35%),
+        radial-gradient(circle at bottom right, rgba(255, 50, 120, 0.35), transparent 35%),
+        #090914;
+      color: white;
+      min-height: 100vh;
+      overflow-x: hidden;
+    }
+
+    header {
+      min-height: 100vh;
+      display: flex;
+      align-items: center;
+      justify-content: center;
+      text-align: center;
+      padding: 40px 20px;
+      position: relative;
+    }
+
+    .hero {
+      max-width: 950px;
+      padding: 50px 28px;
+      border-radius: 32px;
+      background: rgba(255, 255, 255, 0.08);
+      border: 1px solid rgba(255, 255, 255, 0.18);
+      box-shadow: 0 0 60px rgba(140, 90, 255, 0.35);
+      backdrop-filter: blur(16px);
+    }
+
+    .badge {
+      display: inline-block;
+      margin-bottom: 24px;
+      padding: 10px 18px;
+      border-radius: 999px;
+      background: rgba(255, 255, 255, 0.14);
+      font-weight: bold;
+      color: #ffd6f2;
+    }
+
+    h1 {
+      font-size: clamp(36px, 7vw, 82px);
+      line-height: 1.05;
+      margin-bottom: 24px;
+    }
+
+    .gradient {
+      background: linear-gradient(90deg, #fff, #ffd36e, #ff61d2, #7b8cff);
+      -webkit-background-clip: text;
+      color: transparent;
+    }
+
+    .subtitle {
+      font-size: clamp(18px, 3vw, 28px);
+      opacity: 0.92;
+      margin-bottom: 32px;
+      line-height: 1.45;
+    }
+
+    .date {
+      font-size: 24px;
+      font-weight: bold;
+      margin-bottom: 34px;
+      color: #ffe08a;
+    }
+
+    .btn {
+      display: inline-block;
+      text-decoration: none;
+      color: #090914;
+      background: linear-gradient(90deg, #ffe08a, #ff61d2);
+      padding: 16px 28px;
+      border-radius: 999px;
+      font-weight: bold;
+      box-shadow: 0 0 30px rgba(255, 97, 210, 0.45);
+      transition: transform 0.2s ease;
+    }
+
+    .btn:hover {
+      transform: scale(1.06);
+    }
+
+    section {
+      padding: 80px 20px;
+      max-width: 1200px;
+      margin: 0 auto;
+    }
+
+    .section-title {
+      text-align: center;
+      font-size: clamp(30px, 5vw, 54px);
+      margin-bottom: 18px;
+    }
+
+    .section-text {
+      text-align: center;
+      max-width: 800px;
+      margin: 0 auto 44px;
+      font-size: 20px;
+      opacity: 0.85;
+      line-height: 1.5;
+    }
+
+    .priority {
+      margin: 0 auto 45px;
+      max-width: 850px;
+      padding: 28px;
+      border-radius: 26px;
+      background: linear-gradient(135deg, rgba(255, 224, 138, 0.20), rgba(255, 97, 210, 0.16));
+      border: 1px solid rgba(255, 224, 138, 0.35);
+      text-align: center;
+      box-shadow: 0 0 45px rgba(255, 224, 138, 0.13);
+    }
+
+    .priority h3 {
+      font-size: 28px;
+      margin-bottom: 12px;
+      color: #ffe08a;
+    }
+
+    .priority p {
+      font-size: 20px;
+      line-height: 1.5;
+    }
+
+    .grid {
+      display: grid;
+      grid-template-columns: repeat(auto-fit, minmax(260px, 1fr));
+      gap: 24px;
+    }
+
+    .card {
+      padding: 26px;
+      border-radius: 26px;
+      background: rgba(255, 255, 255, 0.08);
+      border: 1px solid rgba(255, 255, 255, 0.16);
+      min-height: 270px;
+      display: flex;
+      flex-direction: column;
+      justify-content: space-between;
+      transition: transform 0.2s ease, background 0.2s ease;
+    }
+
+    .card:hover {
+      transform: translateY(-8px);
+      background: rgba(255, 255, 255, 0.12);
+    }
+
+    .emoji {
+      font-size: 58px;
+      margin-bottom: 20px;
+    }
+
+    .card h3 {
+      font-size: 24px;
+      margin-bottom: 12px;
+    }
+
+    .card p {
+      color: rgba(255, 255, 255, 0.78);
+      line-height: 1.45;
+      font-size: 17px;
+    }
+
+    .tag {
+      margin-top: 20px;
+      display: inline-block;
+      width: fit-content;
+      padding: 8px 12px;
+      border-radius: 999px;
+      background: rgba(255, 255, 255, 0.12);
+      color: #ffe08a;
+      font-size: 14px;
+      font-weight: bold;
+    }
+
+    footer {
+      text-align: center;
+      padding: 80px 20px 100px;
+    }
+
+    footer h2 {
+      font-size: clamp(32px, 5vw, 58px);
+      margin-bottom: 18px;
+    }
+
+    footer p {
+      max-width: 760px;
+      margin: 0 auto;
+      font-size: 22px;
+      line-height: 1.5;
+      opacity: 0.9;
+    }
+
+    .confetti {
+      position: fixed;
+      top: -10px;
+      width: 10px;
+      height: 10px;
+      background: #fff;
+      opacity: 0.8;
+      animation: fall linear infinite;
+      z-index: 1;
+    }
+
+    @keyframes fall {
+      to {
+        transform: translateY(110vh) rotate(720deg);
+      }
+    }
+
+    @media (max-width: 600px) {
+      .hero {
+        padding: 36px 20px;
+      }
+
+      section {
+        padding: 60px 16px;
+      }
+    }
+  </style>
+</head>
+<body>
+  <header>
+    <div class="hero">
+      <div class="badge">24.05.2026 🎂</div>
+      <h1>Вы уже знаете... <br><span class="gradient">у вашего Симки день рождения!</span></h1>
+      <p class="subtitle">
+        У вашего Симки, Серафимки, Симулёнка скоро день рождения.
+        Я собрал здесь то, что реально хотел бы получить в подарок 🎁
+      </p>
+      <div class="date">День рождения: 24 мая 2026</div>
+      <a class="btn" href="#wishlist">Посмотреть wishlist</a>
+    </div>
+  </header>
+
+  <section id="wishlist">
+    <h2 class="section-title">Мой wishlist 🎁</h2>
+    <p class="section-text">
+      Тут не просто случайный список, а вещи, которые мне правда нравятся.
+      Можно выбрать что-то одно, скинуться вместе или просто прийти и сделать праздник круче.
+    </p>
+
+    <div class="priority">
+      <h3>Больше всего я хочу 🔥</h3>
+      <p>
+        Микрофон <b>FIFINE AM8</b> или <b>FIFINE AM9</b>, а ещё очень хочу
+        <b>Stream Deck +</b>. Это самые желанные подарки для стримов и контента.
+      </p>
+    </div>
+
+    <div class="grid">
+      <div class="card">
+        <div>
+          <div class="emoji">🎙️</div>
+          <h3>FIFINE AM8 / AM9, чёрный</h3>
+          <p>Микрофон для стримов, общения и записи. Это прям самый главный пункт в списке.</p>
+        </div>
+        <span class="tag">самый желанный</span>
+      </div>
+
+      <div class="card">
+        <div>
+          <div class="emoji">🎛️</div>
+          <h3>Stream Deck + / Ajazz AKP05</h3>
+          <p>Штука для стримов: сцены, звук, кнопки, быстрые действия  всё под рукой.</p>
+        </div>
+        <span class="tag">второй по желаемости</span>
+      </div>
+
+      <div class="card">
+        <div>
+          <div class="emoji">🎧</div>
+          <h3>Razer BlackShark V3 Pro</h3>
+          <p>Топовые игровые наушники для звука, каток и стримов.</p>
+        </div>
+        <span class="tag">gaming</span>
+      </div>
+
+      <div class="card">
+        <div>
+          <div class="emoji">⌨️</div>
+          <h3>SteelSeries Apex Pro TKL</h3>
+          <p>Клавиатура для игр, скорости и красивого сетапа.</p>
+        </div>
+        <span class="tag">сетап</span>
+      </div>
+
+      <div class="card">
+        <div>
+          <div class="emoji">📱</div>
+          <h3>iPhone 17 Pro</h3>
+          <p>Это уже подарок уровня «вау». Но мечтать же можно 😎</p>
+        </div>
+        <span class="tag">мечта</span>
+      </div>
+
+      <div class="card">
+        <div>
+          <div class="emoji">🚘</div>
+          <h3>Rolls-Royce</h3>
+          <p>А можно ещё вот это? Просто оставлю здесь, вдруг кто-то в настроении 😎</p>
+        </div>
+        <span class="tag">а можно ещё это</span>
+      </div>
+    </div>
+  </section>
+
+  <footer>
+    <h2>Всех жду на своём дне рождения 🎉</h2>
+    <p>
+      Главное приходите сами, потому что без вас праздник будет не тот.
+      А если хочется порадовать Симулёнка wishlist выше 😏🎁
+    </p>
+  </footer>
+
+  <script>
+    const colors = ["#ffe08a", "#ff61d2", "#7b8cff", "#ffffff", "#8affd2"];
+
+    for (let i = 0; i < 55; i++) {
+      const piece = document.createElement("div");
+      piece.className = "confetti";
+      piece.style.left = Math.random() * 100 + "vw";
+      piece.style.background = colors[Math.floor(Math.random() * colors.length)];
+      piece.style.animationDuration = 4 + Math.random() * 5 + "s";
+      piece.style.animationDelay = Math.random() * 5 + "s";
+      piece.style.borderRadius = Math.random() > 0.5 ? "50%" : "2px";
+      document.body.appendChild(piece);
+    }
+  </script>
+</body>
+</html>
